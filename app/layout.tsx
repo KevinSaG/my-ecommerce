@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "My E-Commerce Store",
-  description: "A modern e-commerce store built with Next.js and Supabase",
+  title: "My App",
+  description: "A Next.js application",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body>
         {children}
       </body>
     </html>
