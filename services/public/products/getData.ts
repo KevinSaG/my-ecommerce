@@ -1,9 +1,11 @@
+import { productEndpoints, categoryEndpoints } from '@/constants/api';
+
 /**
  * Get recent products
  */
 export async function getRecentProducts(limit: number = 8) {
   try {
-    const response = await fetch(`/api/products/recent?limit=${limit}`, {
+    const response = await fetch(`${productEndpoints.recent}?limit=${limit}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +31,7 @@ export async function getRecentProducts(limit: number = 8) {
  */
 export async function getMostViewedProducts(limit: number = 8) {
   try {
-    const response = await fetch(`/api/products/viewed?limit=${limit}`, {
+    const response = await fetch(`${productEndpoints.viewed}?limit=${limit}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +57,7 @@ export async function getMostViewedProducts(limit: number = 8) {
  */
 export async function getMostQuotedProducts(limit: number = 8) {
   try {
-    const response = await fetch(`/api/products/quoted?limit=${limit}`, {
+    const response = await fetch(`${productEndpoints.quoted}?limit=${limit}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +83,7 @@ export async function getMostQuotedProducts(limit: number = 8) {
  */
 export async function getCategories() {
   try {
-    const response = await fetch("/api/categories", {
+    const response = await fetch(categoryEndpoints.list, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +121,7 @@ export async function getProductsByCategory(
     }
 
     const response = await fetch(
-      `http://localhost:3000/api/products/by-category?${params.toString()}`,
+      `${productEndpoints.byCategory}?${params.toString()}`,
       {
         method: "GET",
         headers: {
@@ -147,7 +149,7 @@ export async function getProductsByCategory(
  */
 export async function getFeaturedProducts(limit: number = 4) {
   try {
-    const response = await fetch(`/api/products/featured?limit=${limit}`, {
+    const response = await fetch(`${productEndpoints.featured}?limit=${limit}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -250,7 +252,7 @@ export async function searchProducts(
     if (filters.page) params.append("page", filters.page.toString());
     if (filters.limit) params.append("limit", filters.limit.toString());
 
-    const response = await fetch(`/api/products/search?${params.toString()}`, {
+    const response = await fetch(`${productEndpoints.search}?${params.toString()}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -296,7 +298,7 @@ export async function searchProducts(
  */
 export async function getProductById(id: string) {
   try {
-    const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+    const response = await fetch(productEndpoints.byId(id), {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
