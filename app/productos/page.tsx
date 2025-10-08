@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import Pagination from '@/components/Pagination';
 import Link from 'next/link';
+import { AddToCartButton } from '@/components/AddToCartButton';
 import { 
   searchProducts, 
   getCategories, 
@@ -358,8 +359,18 @@ export default function ProductsPage() {
                         </div>
                       </CardContent>
 
-                      <CardFooter className="p-6 pt-0">
-                        <Button className="w-full bg-adelca-primary hover:bg-adelca-primary-hover" asChild>
+                      <CardFooter className="p-6 pt-0 flex flex-col gap-2">
+                        <AddToCartButton
+                          productId={product.id}
+                          quantity={1}
+                          className="w-full bg-adelca-primary hover:bg-adelca-primary-hover"
+                          text="Agregar al Carrito"
+                        />
+                        <Button 
+                          variant="outline" 
+                          className="w-full border-adelca-primary text-adelca-primary hover:bg-adelca-primary hover:text-white" 
+                          asChild
+                        >
                           <Link href={`/productos/${product.id}`}>
                             Ver Detalles
                           </Link>

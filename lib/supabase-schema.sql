@@ -527,19 +527,27 @@ CREATE SEQUENCE quote_number_seq;
 -- =====================================================
 
 -- Enable RLS on tables
-ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
 ALTER TABLE quotes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE addresses ENABLE ROW LEVEL SECURITY;
 
--- Users can read their own data
-CREATE POLICY "Users can view own profile" ON users FOR SELECT USING (auth.uid() = id);
-CREATE POLICY "Users can update own profile" ON users FOR UPDATE USING (auth.uid() = id);
-
 -- Products are publicly readable
 CREATE POLICY "Products are publicly readable" ON products FOR SELECT USING (is_active = true);
 
--- Orders are readable by owner or admin
-CREATE POLICY "Users can view own orders" ON orders FOR SELECT USING (auth.uid() = user_id OR EXISTS (SELECT 1 FROM users WHERE id = auth.uid() AND role IN ('admin', 'sales_rep')));
+-- 🧍 Policy 1: el usuario puede ver sus propias órdenes
+CREATE POLICY "Users can view own orders"
+ON orders
+FOR SELECT
+USING (auth.uid() = user_id);
 
+-- 🧑‍💼 Policy 2: los admins y sales_rep pueden ver todas
+CREATE POLICY "Admins and sales_rep can view all orders"
+ON orders
+FOR SELECT
+USING (
+  auth.uid() IN (
+    SELECT id FROM public.users
+    WHERE role IN ('admin', 'sales_rep')
+  )
+);
