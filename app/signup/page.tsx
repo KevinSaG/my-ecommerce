@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Loader2, Mail, User, Building2, Phone, ArrowLeft, Check } from "lucide-react";
@@ -12,9 +12,11 @@ import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import { signUpWithOTP, verifyOTPCode, signInWithGoogle } from "@/services/authentication/authService";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function SignUpPage() {
   const router = useRouter();
+  const { user, isLoading: authLoading } = useAuth();
   
   // Form state
   const [step, setStep] = useState<"form" | "otp">("form");
@@ -31,6 +33,27 @@ export default function SignUpPage() {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (!authLoading && user) {
+      router.push("/dashboard");
+    }
+  }, [user, authLoading, router]);
+
+  // Show loading while checking auth
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-adelca-primary" />
+      </div>
+    );
+  }
+
+  // Don't render if user is authenticated (will redirect)
+  if (user) {
+    return null;
+  }
 
   const handleSendOTP = async (e: React.FormEvent) => {
     e.preventDefault();
