@@ -9,8 +9,8 @@
 - ✅ Auth helper functions created
 
 ### 2. **Created Admin User**
-- ✅ **Email:** `admin@admin.com`
-- ✅ **Password:** `admin123`
+- ✅ **Email:**
+- ✅ **Password:**
 - ✅ **Role:** `admin`
 - ✅ **Name:** Admin Adelca
 - ✅ Verified in both `auth.users` and `users` tables
@@ -60,8 +60,8 @@ npm run dev
 Then visit: `http://localhost:3000/login`
 
 Use test credentials:
-- **Email:** admin@admin.com
-- **Password:** admin123
+- **Email:** 
+- **Password:**
 
 ### 2. **Access Dashboard**
 

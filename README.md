@@ -216,10 +216,7 @@ Ver [lib/SCHEMA_README.md](./lib/SCHEMA_README.md) para detalles completos.
 ## 🔐 Autenticación
 
 ### Usuario Admin Predeterminado:
-```
-Email: admin@admin.com
-Password: admin123
-```
+
 
 ### Funciones disponibles:
 - ✅ `signUp()` - Registro de usuarios
