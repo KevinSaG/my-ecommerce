@@ -113,10 +113,10 @@ export default async function Home() {
             <div>
               <h4 className="font-semibold mb-4">Enlaces Rápidos</h4>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="/productos" className="hover:text-adelca-primary">Productos</a></li>
-                <li><a href="/categorias" className="hover:text-adelca-primary">Categorías</a></li>
-                <li><a href="/nosotros" className="hover:text-adelca-primary">Nosotros</a></li>
-                <li><a href="/contacto" className="hover:text-adelca-primary">Contacto</a></li>
+                <li><Link href="/productos" className="hover:text-adelca-primary">Productos</Link></li>
+                <li><Link href="/categorias" className="hover:text-adelca-primary">Categorías</Link></li>
+                <li><Link href="/nosotros" className="hover:text-adelca-primary">Nosotros</Link></li>
+                <li><Link href="/contacto" className="hover:text-adelca-primary">Contacto</Link></li>
               </ul>
             </div>
             <div>
