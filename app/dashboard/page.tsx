@@ -6,7 +6,7 @@ export default async function DashboardPage() {
   const { user, profile } = await getCurrentUser();
 
   if (!user) {
-    redirect('/login');
+    redirect('/signin');
   }
 
   const supabase = await createClient();

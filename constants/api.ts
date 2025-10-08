@@ -28,8 +28,30 @@ export const categoryEndpoints = {
   list: baseUrlCategories,
 } as const;
 
-// Auth endpoints (for future use)
-export const baseUrlAuth = `${API_BASE_URL}/api/user-authentication`;
+// Auth endpoints
+export const baseUrlAuth = `${API_BASE_URL}/api/auth`;
+
+// Specific auth endpoints
+export const authEndpoints = {
+  signInEmail: `${baseUrlAuth}/signin-email`,      // Sign in with email + password
+  signUpOTP: `${baseUrlAuth}/signup-otp`,          // Sign up - send OTP
+  verifyOTP: `${baseUrlAuth}/verify-otp`,          // Verify OTP code
+  signInGoogle: `${baseUrlAuth}/signin-google`,    // Google OAuth
+  signOut: `${baseUrlAuth}/signout`,               // Sign out
+  getSession: `${baseUrlAuth}/session`,            // Get current session
+} as const;
+
+// Cart endpoints
+export const baseUrlCart = `${API_BASE_URL}/api/cart`;
+
+export const cartEndpoints = {
+  list: baseUrlCart,
+  add: `${baseUrlCart}/add`,
+  update: `${baseUrlCart}/update`,
+  remove: `${baseUrlCart}/remove`,
+  clear: `${baseUrlCart}/clear`,
+  count: `${baseUrlCart}/count`,
+} as const;
 
 // Other API endpoints (for future expansion)
 export const baseUrlOrders = `${API_BASE_URL}/api/orders`;
@@ -40,7 +62,8 @@ export const baseUrlQuotes = `${API_BASE_URL}/api/quotes`;
 export const apiEndpoints = {
   products: productEndpoints,
   categories: categoryEndpoints,
-  auth: baseUrlAuth,
+  auth: authEndpoints,
+  cart: cartEndpoints,
   orders: baseUrlOrders,
   users: baseUrlUsers,
   quotes: baseUrlQuotes,
