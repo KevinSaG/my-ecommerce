@@ -27,12 +27,15 @@ export function ProtectedRoute({
   fallback,
 }: ProtectedRouteProps) {
   const router = useRouter();
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, user } = useAuth();
   const { role, hasAnyRole } = useRole();
 
+  // Si está autenticado pero el rol aún no está definido, seguir esperando
+  const isRoleLoading = isAuthenticated && !role;
+
   useEffect(() => {
-    // Wait for loading to complete
-    if (isLoading) return;
+    // Wait for loading to complete (auth + role)
+    if (isLoading || isRoleLoading) return;
 
     // Check authentication
     if (requireAuth && !isAuthenticated) {
@@ -47,16 +50,16 @@ export function ProtectedRoute({
         return;
       }
     }
-  }, [isAuthenticated, isLoading, role, requireAuth, allowedRoles, router, redirectTo, hasAnyRole]);
+  }, [isAuthenticated, isLoading, isRoleLoading, role, requireAuth, allowedRoles, router, redirectTo, hasAnyRole]);
 
-  // Show loading state
-  if (isLoading) {
+  // Show loading state (including role loading)
+  if (isLoading || isRoleLoading) {
     return (
       fallback || (
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <Loader2 className="h-12 w-12 animate-spin text-adelca-primary mx-auto mb-4" />
-            <p className="text-slate-600">Cargando...</p>
+            <p className="text-slate-600">Verificando permisos...</p>
           </div>
         </div>
       )

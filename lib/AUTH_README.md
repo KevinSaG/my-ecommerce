@@ -31,8 +31,8 @@ This e-commerce platform uses **Supabase Auth** integrated with custom user tabl
 
 ## 👤 Default Admin User
 
-**Email:** `admin@admin.com`  
-**Password:** `admin123`  
+**Email:**
+**Password:**
 **Role:** `admin`  
 **Name:** Admin Adelca
 
