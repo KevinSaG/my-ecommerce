@@ -168,7 +168,7 @@ export default function CartPage() {
               </div>
 
               {items.map((item) => {
-                const product = item.product;
+                const product = item.products;
                 const isUpdating = updatingItems.has(item.id);
                 const itemTotal = (product?.base_price || 0) * item.quantity;
                 

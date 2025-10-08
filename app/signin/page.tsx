@@ -39,7 +39,7 @@ export default function SignInPage() {
     if (result.success) {
       setSuccess("¡Inicio de sesión exitoso!");
       setTimeout(() => {
-        router.push("/");
+        router.push("/dashboard");
         router.refresh();
       }, 1000);
     } else {

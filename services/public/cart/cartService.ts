@@ -7,7 +7,7 @@ export interface CartItem {
   quantity: number;
   selected_plant?: string;
   notes?: string;
-  product?: any;
+  products?: any;
 }
 
 /**
@@ -214,7 +214,7 @@ export async function getCartCount() {
  */
 export function calculateCartTotals(items: CartItem[]) {
   const subtotal = items.reduce((sum, item) => {
-    const price = item.product?.base_price || 0;
+    const price = item.products?.base_price || 0;
     return sum + (price * item.quantity);
   }, 0);
 

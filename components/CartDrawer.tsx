@@ -138,7 +138,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
           <>
             <div className="flex-1 overflow-y-auto py-4 space-y-4">
               {items.map((item) => {
-                const product = item.product;
+                const product = item.products;
                 const isUpdating = updatingItems.has(item.id);
                 
                 return (

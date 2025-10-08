@@ -44,7 +44,6 @@ Sistema completo de autenticación integrado con Supabase, incluyendo triggers a
 - last_name: TEXT
 - company_name: TEXT
 - tax_id: TEXT
-- phone: TEXT
 - customer_type: customer_type
 - credit_limit: NUMERIC
 - credit_used: NUMERIC
@@ -70,8 +69,9 @@ Sistema completo de autenticación integrado con Supabase, incluyendo triggers a
    - email_verified según confirmación
 
 2. Crea registro en `public.user_profiles` con:
-   - Datos de `raw_user_meta_data` (first_name, last_name, company_name, phone)
+   - Datos de `raw_user_meta_data` (first_name, last_name, company_name)
    - Valores por defecto para campos opcionales
+   - **Nota:** El teléfono se guarda en `public.users`, no en `user_profiles`
 
 ```sql
 CREATE TRIGGER on_auth_user_created

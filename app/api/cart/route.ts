@@ -45,7 +45,7 @@ export async function GET() {
       .from('cart_items')
       .select(`
         *,
-        product:products(
+        products:products(
           id,
           name,
           sku,

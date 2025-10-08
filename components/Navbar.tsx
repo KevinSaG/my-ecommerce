@@ -139,6 +139,18 @@ export default function Navbar() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/mis-ordenes">
+                    <NavigationMenuLink
+                      className={
+                        navigationMenuTriggerStyle() +
+                        " bg-transparent hover:bg-white hover:text-adelca-primary"
+                      }
+                    >
+                      Mis Órdenes
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -261,6 +273,12 @@ export default function Navbar() {
                 className="hover:text-orange-400 transition font-medium"
               >
                 Contacto
+              </Link>
+              <Link
+                href="/mis-ordenes"
+                className="hover:text-orange-400 transition font-medium"
+              >
+                Mis Órdenes
               </Link>
             </div>
           </div>

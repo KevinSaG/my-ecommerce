@@ -79,7 +79,7 @@ export default function SignUpPage() {
     if (result.success) {
       setSuccess("¡Registro exitoso! Redirigiendo...");
       setTimeout(() => {
-        router.push("/");
+        router.push("/dashboard");
         router.refresh();
       }, 1500);
     } else {
