@@ -6,6 +6,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const categorySlug = searchParams.get('slug');
     const limit = parseInt(searchParams.get('limit') || '12');
+    const excludeId = searchParams.get('excludeId');
 
     if (!categorySlug) {
       return NextResponse.json(
@@ -16,7 +17,7 @@ export async function GET(request: NextRequest) {
 
     const supabase = await createClient();
     
-    const { data, error } = await supabase
+    let query = supabase
       .from('products')
       .select(`
         *,
@@ -26,7 +27,14 @@ export async function GET(request: NextRequest) {
         )
       `)
       .eq('is_active', true)
-      .limit(limit);
+      .eq('category', categorySlug);
+
+    // Exclude specific product if excludeId is provided
+    if (excludeId) {
+      query = query.neq('id', excludeId);
+    }
+
+    const { data, error } = await query.limit(limit);
 
     if (error) {
       console.error('Error fetching products by category:', error);
