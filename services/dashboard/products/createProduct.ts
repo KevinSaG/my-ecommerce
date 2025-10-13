@@ -18,7 +18,6 @@ export async function createProduct(
       body: JSON.stringify(productData),
     });
 
-    const result = await response.json();
     return await response.json();
   } catch (error) {
     console.error("Error creating product:", error);
