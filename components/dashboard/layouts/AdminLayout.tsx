@@ -3,11 +3,11 @@
  * Layout específico para usuarios con rol de administrador
  */
 
-'use client';
+"use client";
 
-import { UserRole } from '@/types';
-import { ProtectedRoute } from '@/components/auth';
-import DashboardSidebar from '@/components/DashboardSidebar';
+import { UserRole } from "@/types";
+import { ProtectedRoute } from "@/components/auth";
+import DashboardSidebar from "@/components/DashboardSidebar";
 import {
   LayoutDashboard,
   Users,
@@ -16,7 +16,7 @@ import {
   BarChart3,
   Settings,
   Warehouse,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -24,40 +24,41 @@ interface AdminLayoutProps {
 
 const adminNavigation = [
   {
-    title: 'Dashboard',
-    href: '/dashboard',
+    title: "Dashboard",
+    href: "/dashboard",
     icon: LayoutDashboard,
   },
   {
-    title: 'Usuarios',
-    href: '/dashboard/usuarios',
+    title: "Productos",
+    href: "/dashboard/productos",
+    icon: Package,
+  },/*
+  {
+    title: "Usuarios",
+    href: "/dashboard/usuarios",
     icon: Users,
   },
+
   {
-    title: 'Productos',
-    href: '/dashboard/productos',
-    icon: Package,
-  },
-  {
-    title: 'Pedidos',
-    href: '/dashboard/pedidos',
+    title: "Pedidos",
+    href: "/dashboard/pedidos",
     icon: ShoppingCart,
   },
   {
-    title: 'Inventario',
-    href: '/dashboard/inventario',
+    title: "Inventario",
+    href: "/dashboard/inventario",
     icon: Warehouse,
   },
   {
-    title: 'Reportes',
-    href: '/dashboard/reportes',
+    title: "Reportes",
+    href: "/dashboard/reportes",
     icon: BarChart3,
   },
   {
-    title: 'Configuración',
-    href: '/dashboard/configuracion',
+    title: "Configuración",
+    href: "/dashboard/configuracion",
     icon: Settings,
-  },
+  },*/
 ];
 
 export function AdminLayout({ children }: AdminLayoutProps) {
@@ -66,12 +67,9 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       <div className="flex h-screen bg-slate-50">
         <DashboardSidebar navigation={adminNavigation} />
         <main className="flex-1 overflow-y-auto">
-          <div className="container mx-auto px-6 py-8">
-            {children}
-          </div>
+          <div className="container mx-auto px-6 py-8">{children}</div>
         </main>
       </div>
     </ProtectedRoute>
   );
 }
-

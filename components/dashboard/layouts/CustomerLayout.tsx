@@ -30,7 +30,7 @@ const customerNavigation = [
     title: 'Mis Pedidos',
     href: '/dashboard/mis-pedidos',
     icon: ShoppingCart,
-  },
+  },/*
   {
     title: 'Favoritos',
     href: '/dashboard/favoritos',
@@ -45,7 +45,7 @@ const customerNavigation = [
     title: 'Mi Perfil',
     href: '/dashboard/perfil',
     icon: User,
-  },
+  },*/
 ];
 
 export function CustomerLayout({ children }: CustomerLayoutProps) {
