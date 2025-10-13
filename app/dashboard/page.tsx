@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Package, ShoppingCart, TrendingUp, Loader2, Link } from 'lucide-react';
-import { 
-  getDashboardStats, 
+import { useEffect, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Package, ShoppingCart, TrendingUp, Loader2, Link, ShoppingBasket } from "lucide-react";
+import {
+  getDashboardStats,
   getUserProfile,
   type DashboardStats,
-  type UserProfile
-} from '@/services/dashboard';
+  type UserProfile,
+} from "@/services/dashboard";
 
 export default function DashboardPage() {
   const [stats, setStats] = useState<DashboardStats>({
@@ -18,12 +18,12 @@ export default function DashboardPage() {
   });
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function loadDashboardData() {
       setIsLoading(true);
-      setError('');
+      setError("");
 
       // Load stats and profile in parallel
       const [statsResult, profileResult] = await Promise.all([
@@ -34,7 +34,7 @@ export default function DashboardPage() {
       if (statsResult.success) {
         setStats(statsResult.data);
       } else {
-        setError(statsResult.error || 'Error al cargar estadísticas');
+        setError(statsResult.error || "Error al cargar estadísticas");
       }
 
       if (profileResult.success && profileResult.data) {
@@ -49,25 +49,25 @@ export default function DashboardPage() {
 
   const statsCards = [
     {
-      title: 'Productos Disponibles',
+      title: "Productos Disponibles",
       value: stats.productCount,
       icon: Package,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
+      color: "text-blue-600",
+      bgColor: "bg-blue-50",
     },
     {
-      title: 'Mis Órdenes',
+      title: "Mis Órdenes",
       value: stats.orderCount,
-      icon: ShoppingCart,
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
+      icon: Package,
+      color: "text-green-600",
+      bgColor: "bg-green-50",
     },
     {
-      title: 'En Carrito',
+      title: "En Carrito",
       value: stats.cartCount,
-      icon: TrendingUp,
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-50',
+      icon: ShoppingCart,
+      color: "text-orange-600",
+      bgColor: "bg-orange-50",
     },
   ];
 
@@ -97,7 +97,7 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-slate-900">
-          Bienvenido, {profile?.profile?.first_name || 'Usuario'}
+          Bienvenido, {profile?.profile?.first_name || "Usuario"}
         </h1>
         <p className="text-slate-600 mt-1">
           Panel de control de ADELCA - Gestiona tus compras y pedidos
@@ -137,29 +137,35 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link
-              href="/"
+            <a
+              href="/productos"
               className="flex items-center gap-4 p-4 border border-slate-200 rounded-lg hover:border-adelca-primary hover:bg-red-50 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="bg-adelca-primary p-3 rounded-lg">
-                <ShoppingCart className="h-6 w-6 text-white" />
+                <ShoppingBasket className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900">Ver Catálogo</h3>
-                <p className="text-sm text-slate-600">Explora nuestros productos</p>
+                <p className="text-sm text-slate-600">
+                  Explora nuestros productos
+                </p>
               </div>
-            </Link>
+            </a>
 
             <a
               href="/carrito"
               className="flex items-center gap-4 p-4 border border-slate-200 rounded-lg hover:border-adelca-primary hover:bg-red-50 transition-colors"
             >
               <div className="bg-green-600 p-3 rounded-lg">
-                <Package className="h-6 w-6 text-white" />
+                <ShoppingCart className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900">Mi Carrito</h3>
-                <p className="text-sm text-slate-600">Ver productos en carrito</p>
+                <p className="text-sm text-slate-600">
+                  Ver productos en carrito
+                </p>
               </div>
             </a>
           </div>
@@ -182,18 +188,23 @@ export default function DashboardPage() {
               </div>
               <div>
                 <p className="text-sm text-slate-600">Email</p>
-                <p className="font-medium text-slate-900">{profile.user?.email}</p>
+                <p className="font-medium text-slate-900">
+                  {profile.user?.email}
+                </p>
               </div>
               {profile.profile?.company_name && (
                 <div>
                   <p className="text-sm text-slate-600">Empresa</p>
-                  <p className="font-medium text-slate-900">{profile.profile.company_name}</p>
+                  <p className="font-medium text-slate-900">
+                    {profile.profile.company_name}
+                  </p>
                 </div>
               )}
               <div>
                 <p className="text-sm text-slate-600">Tipo de Cliente</p>
                 <p className="font-medium text-slate-900 capitalize">
-                  {profile.profile?.customer_type?.replace('_', ' ') || 'Retail'}
+                  {profile.profile?.customer_type?.replace("_", " ") ||
+                    "Retail"}
                 </p>
               </div>
             </div>
