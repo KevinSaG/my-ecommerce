@@ -1,77 +1,102 @@
----
-sidebar_position: 1
-title: Introducción
----
+# Introducción
 
-# ADELCA E-Commerce Documentation
+Bienvenido a la documentación de **My E-commerce** - Una plataforma moderna de comercio electrónico para productos industriales construida con Next.js 15, Supabase y TypeScript.
 
-Bienvenido a la documentación oficial de **ADELCA E-Commerce**, una plataforma de comercio electrónico B2B desarrollada con Next.js, TypeScript y Supabase.
+## 🚀 Características Principales
 
-## 🎯 Visión General
+- ✅ **Autenticación Completa**: Email/Password y Google OAuth
+- ✅ **Dashboard por Roles**: Admin, Sales Rep, y Customer
+- ✅ **Gestión de Productos**: CRUD completo con TanStack Table
+- ✅ **Gestión de Órdenes**: Visualización y seguimiento de pedidos
+- ✅ **Carrito de Compras**: Sistema completo con persistencia
+- ✅ **Sistema de Cotizaciones**: Para productos que requieren cotización
+- ✅ **Multi-planta**: Soporte para múltiples ubicaciones (Aloag, Milagro)
 
-ADELCA E-Commerce es una aplicación web completa diseñada para facilitar las ventas B2B de productos de acero, ofreciendo:
-
-- 🛒 **Catálogo de Productos** con búsqueda y filtros avanzados
-- 🔐 **Autenticación Segura** con email/password, OTP y Google Sign-In
-- 🛍️ **Carrito de Compras** persistente con gestión de cantidades
-- 💳 **Sistema de Checkout** con múltiples métodos de pago y envío
-- 📦 **Gestión de Órdenes** con seguimiento y historial
-- 📊 **Dashboard por Roles** (Admin, Sales Rep, Customer, Distributor)
-- 🔒 **Control de Acceso** basado en roles (RBAC)
-
-## 🏗️ Tecnologías
+## 🛠️ Stack Tecnológico
 
 ### Frontend
-- **Next.js 15** - Framework de React con App Router
-- **TypeScript** - Tipado estático
-- **Tailwind CSS** - Estilos utilitarios
-- **shadcn/ui** - Componentes UI
+- **Framework**: Next.js 15 (App Router)
+- **UI**: Shadcn/ui + Tailwind CSS
+- **Estado**: React Hooks + Context API
+- **Formularios**: React Hook Form + Zod
+- **Tablas**: TanStack Table v8
 
 ### Backend
-- **Next.js API Routes** - Endpoints serverless
-- **Supabase** - Base de datos PostgreSQL y autenticación
-- **Row Level Security (RLS)** - Seguridad a nivel de datos
+- **Base de Datos**: Supabase (PostgreSQL)
+- **Autenticación**: Supabase Auth
+- **Storage**: Supabase Storage (para imágenes)
+- **API**: Next.js API Routes
 
-### Arquitectura
-- **Frontend → Services → APIs → Supabase** - Flujo de datos claro
-- **Modular** - Organización por dominios
-- **Escalable** - Fácil de mantener y extender
+### Testing
+- **Framework**: Jest
+- **Testing Library**: React Testing Library
+- **Coverage**: Jest Coverage
 
-## 🚀 Inicio Rápido
+## 📚 Estructura de la Documentación
+
+<div className="button-group">
+  <a href="./getting-started/installation" className="button button--primary">
+    Instalación
+  </a>
+  <a href="./architecture/overview" className="button button--secondary">
+    Arquitectura
+  </a>
+  <a href="./api/overview" className="button button--secondary">
+    API Reference
+  </a>
+</div>
+
+## 🎯 Casos de Uso
+
+### Para Clientes (Customers)
+- Navegar catálogo de productos
+- Agregar productos al carrito
+- Crear órdenes de compra
+- Ver historial de órdenes
+- Solicitar cotizaciones
+
+### Para Administradores (Admin)
+- Gestionar productos (crear, editar, eliminar)
+- Ver estadísticas del dashboard
+- Gestionar inventario
+- Procesar órdenes
+
+### Para Representantes de Ventas (Sales Rep)
+- Ver productos y stock
+- Crear cotizaciones para clientes
+- Ver órdenes asignadas
+
+## 🚦 Inicio Rápido
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/your-org/my-ecommerce.git
+# 1. Clonar el repositorio
+git clone [repository-url]
 
-# Instalar dependencias
+# 2. Instalar dependencias
 npm install
 
-# Configurar variables de entorno
+# 3. Configurar variables de entorno
 cp .env.example .env.local
 
-# Iniciar el servidor de desarrollo
+# 4. Ejecutar en desarrollo
 npm run dev
+
+# 5. Ejecutar tests
+npm test
 ```
 
-Visita [http://localhost:3000](http://localhost:3000) para ver la aplicación.
+## 📖 Siguientes Pasos
 
-## 📚 Siguiente Paso
-
-- [Instalación](/docs/getting-started/installation) - Configuración del proyecto
-- [Arquitectura](/docs/architecture/overview) - Entender la estructura del proyecto
-- [API Reference](/docs/api/overview) - Documentación de las APIs
-- [Guías](/docs/guides/getting-started) - Tutoriales paso a paso
+1. [Instalación y Configuración](./getting-started/installation)
+2. [Arquitectura del Sistema](./architecture/overview)
+3. [Guía de API](./api/overview)
+4. [Base de Datos](./database/overview)
+5. [Deployment](./guides/deployment/vercel)
 
 ## 🤝 Contribuir
 
-Este proyecto sigue las mejores prácticas de desarrollo:
+Para contribuir al proyecto, por favor lee nuestra [guía de contribución](./guides/contributing).
 
-- Clean Code
-- Arquitectura modular
-- Documentación completa
-- TypeScript estricto
-- Seguridad first
+## 📝 Licencia
 
-## 📄 Licencia
-
-Copyright © 2024 ADELCA E-Commerce
+Este proyecto está licenciado bajo [MIT License](./LICENSE).
