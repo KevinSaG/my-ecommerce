@@ -10,8 +10,39 @@ export interface Product {
   name: string;
   description?: string;
   category: string;
+  
+  // Especificaciones técnicas
+  diameter?: number | null;
+  length?: number | null;
+  width?: number | null;
+  thickness?: number | null;
+  weight_per_unit?: number;
+  grade?: string | null;
+  
+  // Normas técnicas
+  technical_standards?: string[];
+  
+  // Precio
   base_price: number;
+  price_per_kg?: number | null;
+  currency?: string;
+  
+  // Inventario y disponibilidad
   is_active: boolean;
+  requires_quote?: boolean;
+  min_order_quantity?: number;
+  stock_unit?: string;
+  
+  // Imágenes y archivos
+  images?: string[];
+  technical_sheet_url?: string | null;
+  
+  // SEO
+  slug?: string;
+  meta_title?: string | null;
+  meta_description?: string | null;
+  
+  // Timestamps
   created_at: string;
   updated_at: string;
 }

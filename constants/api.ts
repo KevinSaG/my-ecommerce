@@ -79,9 +79,10 @@ export const dashboardEndpoints = {
   // Products Management
   products: {
     list: `${baseUrlDashboard}/products`,
-    create: `${baseUrlDashboard}/products/create`,
-    update: `${baseUrlDashboard}/products/update`,
-    delete: `${baseUrlDashboard}/products/delete`,
+    byId: (id: string) => `${baseUrlDashboard}/products/${id}`,
+    create: `${baseUrlDashboard}/products`,
+    update: (id: string) => `${baseUrlDashboard}/products/${id}`,
+    delete: (id: string) => `${baseUrlDashboard}/products/${id}`,
   },
   
   // Reports & Analytics
