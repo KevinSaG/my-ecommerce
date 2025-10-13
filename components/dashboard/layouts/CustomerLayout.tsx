@@ -3,18 +3,19 @@
  * Layout específico para clientes
  */
 
-'use client';
+"use client";
 
-import { UserRole } from '@/types';
-import { ProtectedRoute } from '@/components/auth';
-import DashboardSidebar from '@/components/DashboardSidebar';
+import { UserRole } from "@/types";
+import { ProtectedRoute } from "@/components/auth";
+import DashboardSidebar from "@/components/DashboardSidebar";
 import {
   LayoutDashboard,
   ShoppingCart,
   Heart,
   User,
   FileText,
-} from 'lucide-react';
+  Package,
+} from "lucide-react";
 
 interface CustomerLayoutProps {
   children: React.ReactNode;
@@ -22,15 +23,15 @@ interface CustomerLayoutProps {
 
 const customerNavigation = [
   {
-    title: 'Dashboard',
-    href: '/dashboard',
+    title: "Dashboard",
+    href: "/dashboard",
     icon: LayoutDashboard,
   },
   {
-    title: 'Mis Pedidos',
-    href: '/dashboard/mis-pedidos',
-    icon: ShoppingCart,
-  },/*
+    title: "Mis Órdenes",
+    href: "/dashboard/ordenes",
+    icon: Package,
+  } /*
   {
     title: 'Favoritos',
     href: '/dashboard/favoritos',
@@ -45,7 +46,7 @@ const customerNavigation = [
     title: 'Mi Perfil',
     href: '/dashboard/perfil',
     icon: User,
-  },*/
+  },*/,
 ];
 
 export function CustomerLayout({ children }: CustomerLayoutProps) {
@@ -54,12 +55,9 @@ export function CustomerLayout({ children }: CustomerLayoutProps) {
       <div className="flex h-screen bg-slate-50">
         <DashboardSidebar navigation={customerNavigation} />
         <main className="flex-1 overflow-y-auto">
-          <div className="container mx-auto px-6 py-8">
-            {children}
-          </div>
+          <div className="container mx-auto px-6 py-8">{children}</div>
         </main>
       </div>
     </ProtectedRoute>
   );
 }
-
