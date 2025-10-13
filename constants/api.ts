@@ -98,9 +98,15 @@ export const dashboardEndpoints = {
     update: `${baseUrlDashboard}/inventory/update`,
     lowStock: `${baseUrlDashboard}/inventory/low-stock`,
   },
+  
+  // Customer Orders (Dashboard view)
+  customerOrders: {
+    list: `${baseUrlDashboard}/orders`,
+    byId: (id: string) => `${baseUrlDashboard}/orders/${id}`,
+  },
 } as const;
 
-// Orders endpoints
+// Public Orders endpoints
 export const baseUrlOrders = `${API_BASE_URL}/api/orders`;
 
 export const orderEndpoints = {

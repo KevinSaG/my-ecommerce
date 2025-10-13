@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
     const {
       shipping_method,
       shipping_address_id,
+      shipping_address,
       pickup_location,
       payment_method,
       customer_notes,
@@ -30,6 +31,59 @@ export async function POST(request: NextRequest) {
         { error: 'Método de envío y pago son requeridos' },
         { status: 400 }
       );
+    }
+
+    // Handle shipping address
+    let finalShippingAddressId = shipping_address_id;
+
+    // Si se requiere envío y no hay dirección, crearla o usar una existente
+    if (shipping_method !== 'pickup_quito' && shipping_method !== 'pickup_milagro' && !finalShippingAddressId) {
+      // Si se envió datos de dirección, crear nueva
+      if (shipping_address) {
+        const { data: newAddress, error: addressError } = await supabase
+          .from('addresses')
+          .insert({
+            user_id: user.id,
+            label: shipping_address.label || 'Nueva Dirección',
+            street: shipping_address.street || 'Dirección sin especificar',
+            city: shipping_address.city || 'Ciudad',
+            province: shipping_address.province || 'Provincia',
+            postal_code: shipping_address.postal_code || '000000',
+            country: shipping_address.country || 'Ecuador',
+            phone: shipping_address.phone || '0999999999',
+            is_default: shipping_address.is_default || false,
+          })
+          .select()
+          .single();
+
+        if (!addressError && newAddress) {
+          finalShippingAddressId = newAddress.id;
+        }
+      } else {
+        // Buscar dirección por defecto del usuario
+        const { data: defaultAddress } = await supabase
+          .from('addresses')
+          .select('id')
+          .eq('user_id', user.id)
+          .eq('is_default', true)
+          .single();
+
+        if (defaultAddress) {
+          finalShippingAddressId = defaultAddress.id;
+        } else {
+          // Buscar cualquier dirección del usuario
+          const { data: anyAddress } = await supabase
+            .from('addresses')
+            .select('id')
+            .eq('user_id', user.id)
+            .limit(1)
+            .single();
+
+          if (anyAddress) {
+            finalShippingAddressId = anyAddress.id;
+          }
+        }
+      }
     }
 
     // Get user's cart
@@ -90,7 +144,7 @@ export async function POST(request: NextRequest) {
         total,
         payment_method,
         shipping_method,
-        shipping_address_id: shipping_address_id || null,
+        shipping_address_id: finalShippingAddressId || null,
         pickup_location: pickup_location || null,
         customer_notes: customer_notes || null,
       })
