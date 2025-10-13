@@ -1,6 +1,7 @@
 'use client';
 
 import { RoleBasedDashboard } from '@/components/dashboard';
+import { Toaster } from 'sonner';
 
 export default function DashboardLayout({
   children,
@@ -10,6 +11,7 @@ export default function DashboardLayout({
   return (
     <RoleBasedDashboard>
       {children}
+      <Toaster />
     </RoleBasedDashboard>
   );
 }
