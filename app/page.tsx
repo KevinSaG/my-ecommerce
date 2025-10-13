@@ -2,10 +2,12 @@ import Navbar from '@/components/Navbar';
 import HeroBanner from '@/components/HeroBanner';
 import ProductCarousel from '@/components/ProductCarousel';
 import CategoryGrid from '@/components/CategoryGrid';
+import AuthHandler from './auth-handler';
 import { createClient } from '@/lib/supabase/server';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 export default async function Home() {
   const supabase = await createClient();
@@ -50,6 +52,9 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen">
+      <Suspense fallback={null}>
+        <AuthHandler />
+      </Suspense>
       <Navbar />
       <HeroBanner />
       
