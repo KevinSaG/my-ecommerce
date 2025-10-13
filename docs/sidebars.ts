@@ -39,6 +39,13 @@ const sidebars: SidebarsConfig = {
         // 'features/dashboard',
       ],
     },
+    {
+      type: 'category',
+      label: 'Testing',
+      items: [
+        'testing/overview',
+      ],
+    },
     // TODO: Descomentar cuando se creen los archivos
     // {
     //   type: 'category',
@@ -56,27 +63,28 @@ const sidebars: SidebarsConfig = {
   // Sidebar de API
   apiSidebar: [
     'api/overview',
+    {
+      type: 'category',
+      label: 'Authentication',
+      items: [
+        'api/auth/overview',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Products',
+      items: [
+        'api/products/overview',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Orders',
+      items: [
+        'api/orders/overview',
+      ],
+    },
     // TODO: Descomentar cuando se creen los archivos
-    // {
-    //   type: 'category',
-    //   label: 'Authentication',
-    //   items: [
-    //     'api/auth/signin',
-    //     'api/auth/signup',
-    //     'api/auth/signout',
-    //     'api/auth/session',
-    //   ],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Products',
-    //   items: [
-    //     'api/products/list',
-    //     'api/products/search',
-    //     'api/products/by-id',
-    //     'api/products/by-category',
-    //   ],
-    // },
     // {
     //   type: 'category',
     //   label: 'Cart',
@@ -86,15 +94,6 @@ const sidebars: SidebarsConfig = {
     //     'api/cart/update',
     //     'api/cart/remove',
     //     'api/cart/clear',
-    //   ],
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Orders',
-    //   items: [
-    //     'api/orders/create',
-    //     'api/orders/list',
-    //     'api/orders/by-id',
     //   ],
     // },
     // {

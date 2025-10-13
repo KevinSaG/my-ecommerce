@@ -119,11 +119,24 @@ my-ecommerce/
 
 ## 📚 Documentación
 
+### Documentación Interactiva (Docusaurus)
+```bash
+npm run docs
+```
+Visita [http://localhost:3001](http://localhost:3001) para ver la documentación completa.
+
+### Documentación Markdown
 - **[HOME_PAGE_SUMMARY.md](./HOME_PAGE_SUMMARY.md)** - Documentación completa de la home page
 - **[SHADCN_INTEGRATION.md](./SHADCN_INTEGRATION.md)** - Guía de integración shadcn/ui
 - **[lib/SCHEMA_README.md](./lib/SCHEMA_README.md)** - Documentación del schema de base de datos
 - **[lib/AUTH_README.md](./lib/AUTH_README.md)** - Guía de autenticación
 - **[SEED_DATA_SUMMARY.md](./SEED_DATA_SUMMARY.md)** - Datos de prueba insertados
+- **[__tests__/README.md](./__tests__/README.md)** - Guía de testing
+
+### Guías Técnicas
+- **API Documentation** - Ver `docs/docs/api/`
+- **Testing Guide** - Ver `docs/docs/testing/`
+- **Deployment Guide** - Ver `docs/docs/guides/deployment/`
 
 ---
 
@@ -144,10 +157,21 @@ my-ecommerce/
 ## 🔧 Scripts Disponibles
 
 ```bash
-npm run dev      # Servidor de desarrollo (http://localhost:3000)
-npm run build    # Build de producción
-npm run start    # Servidor de producción
-npm run lint     # Linter ESLint
+# Desarrollo
+npm run dev              # Servidor de desarrollo (http://localhost:3000)
+npm run build            # Build de producción
+npm run start            # Servidor de producción
+npm run lint             # Linter ESLint
+
+# Testing
+npm test                 # Ejecutar tests
+npm run test:watch       # Tests en watch mode
+npm run test:coverage    # Coverage report
+
+# Documentación
+npm run docs             # Iniciar Docusaurus
+npm run docs:build       # Build de documentación
+npm run docs:serve       # Servir docs en producción
 ```
 
 ---
@@ -321,18 +345,27 @@ export default function MyPage() {
 
 ---
 
-## 🧪 Testing (Próximamente)
+## 🧪 Testing
+
+El proyecto incluye tests unitarios con **Jest** y **React Testing Library**.
 
 ```bash
-# Unit tests
+# Ejecutar todos los tests
 npm test
 
-# E2E tests
-npm run test:e2e
+# Watch mode (desarrollo)
+npm run test:watch
 
-# Coverage
+# Coverage report
 npm run test:coverage
 ```
+
+### Tests Disponibles:
+- ✅ **Services** - Tests de servicios (API calls)
+- ✅ **Components** - Tests de componentes React
+- ✅ **Integration** - Tests de integración (en desarrollo)
+
+Ver [__tests__/README.md](./__tests__/README.md) para guía completa de testing.
 
 ---
 
