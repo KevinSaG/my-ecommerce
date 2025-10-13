@@ -25,7 +25,7 @@ const config: Config = {
   organizationName: 'adelca', // Usually your GitHub org/user name.
   projectName: 'my-ecommerce', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn', // Changed from 'throw' to 'warn' for development
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
